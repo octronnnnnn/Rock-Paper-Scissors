@@ -5,13 +5,13 @@ function getComputerChoice() {
     return choices[randomIndex];
 }
 
-// declare variable for player selection
+// declare variable for player choice
 const playerSelection = prompt("Your Choice?");
 
-// decalre variable for computerSelection
+// decalre variable for computers choice
 const computerSelection = getComputerChoice();
 
-// function that that takes players and computers choice and plays one round of rock paper scissors
+// function that that takes the players and the computers choice and plays one round of rock paper scissors
 
 function play(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
@@ -21,11 +21,11 @@ function play(playerSelection, computerSelection) {
     const loss = "You loose! " + computerSelection + " beats " + playerSelection;
     const tie = "Tie!";
 
-    if (playerSelection == "rock" && computerSelection == "paper" || playerSelection == "paper" && computerSelection == "scissors" || playerSelection == "scissors" && computerSelection == "rock") {
-        return result = loss;
-    }
-    else if (playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "paper" &&          computerSelection == "rock" || playerSelection == "scissors" && computerSelection == "paper") {
+    if (playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "paper" &&          computerSelection == "rock" || playerSelection == "scissors" && computerSelection == "paper") {
         return result = win;
+    }
+    else if (playerSelection == "rock" && computerSelection == "paper" || playerSelection == "paper" && computerSelection == "scissors" || playerSelection == "scissors" && computerSelection == "rock") {
+        return result = loss;
     }
     else if (playerSelection == "rock" && computerSelection == "rock" || playerSelection == "paper" &&          computerSelection == "paper" || playerSelection == "scissors" && computerSelection == "scissors") {
         return result = tie;
@@ -34,6 +34,5 @@ function play(playerSelection, computerSelection) {
         return result = "Please choose between Rock, Paper or Scissors (not case sensitive)";
     }
 }
-
- play(playerSelection, computerSelection);
- 
+console.log(play(playerSelection, computerSelection));
+ // 
