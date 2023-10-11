@@ -11,7 +11,7 @@ const playerSelection = prompt("Your Choice?");
 // decalre variable for computerSelection
 const computerSelection = getComputerChoice();
 
-// function that plays one round of rock paper scissors and takes two parameters, playerSelection and computerSelection. Returns a string that decalres the winner
+// function that that takes players and computers choice and plays one round of rock paper scissors
 
 function play(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
@@ -31,7 +31,7 @@ function play(playerSelection, computerSelection) {
         return result = tie;
     }
     else {
-        result = "Please choose between Rock, Paper or Scissors (not case sensitive)";
+        return result = "Please choose between Rock, Paper or Scissors (not case sensitive)";
     }
 }
 
