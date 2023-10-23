@@ -58,13 +58,19 @@ function updateScore (playerScore, computerScore) {
 function announceWinner(playerScore, computerScore) {
     const container = document.querySelector("#container");
     const announcement = document.createElement("h2");
-    if (computerScore === 5) {
+    if (computerScore == 5) {
         announcement.textContent = "You lost!!!"
         container.appendChild(announcement);
+        document.getElementById("1").disabled = true;
+        document.getElementById("2").disabled = true;
+        document.getElementById("3").disabled = true;
     }
-    else if (playerScore === 5) {
+    else if (playerScore == 5) {
         announcement.textContent = "You won!!!";
         container.appendChild(announcement);
+        document.getElementById("1").disabled = true;
+        document.getElementById("2").disabled = true;
+        document.getElementById("3").disabled = true;
     }
 }
 
@@ -97,9 +103,9 @@ function play(playerChoice, computerChoice) {
 
 //UI
 
-const rockBtn = document.querySelector("#rock");
-const paperBtn = document.querySelector("#paper");
-const scissorsBtn = document.querySelector("#scissors");
+const rockBtn = document.querySelector(".rock");
+const paperBtn = document.querySelector(".paper");
+const scissorsBtn = document.querySelector(".scissors");
 
 rockBtn.addEventListener("click", () => {
     const computerChoice = getComputerChoice();
