@@ -1,28 +1,3 @@
-//plays 5 rounds of rock paper scissors and keeps track of scores to declare a winner at the end
-/* function game() {
-    //declare varaibles to keep track of scores
-    let playerScore = 0;
-    let computerScore = 0;
-    //loop to play 5 rounds
-    for (i = 0; i < 5; i++) {
-        //declare variables for players and computers choice to pass to play and checkWinner functions
-        const playerChoice = getPlayerChoice();
-        const computerChoice = getComputerChoice();
-        //play the game and log the result
-        console.log(play(playerChoice, computerChoice));
-        //increse scores based on who won the round
-        if (checkWinner(playerChoice, computerChoice) == "player") {
-            playerScore++;
-        }
-        else if (checkWinner(playerChoice, computerChoice) == "computer") {
-            computerScore++;
-        }
-    }
-    //display players and computers scores and announce the winner
-    console.log(`Your score: ${playerScore}
-Computers score: ${computerScore}`);
-    announceWinner(playerScore, computerScore); */
-
 //array of possible choices other functions can use
 const choices = ["rock", "paper", "scissors"];
 
@@ -58,26 +33,28 @@ function updateScore (playerScore, computerScore) {
 function announceWinner(playerScore, computerScore) {
     const container = document.querySelector("#container");
     const announcement = document.createElement("h2");
-    if (computerScore == 5) {
-        announcement.textContent = "You lost!!!"
-        container.appendChild(announcement);
+    //disable buttons as soon as either the player or the computer reaches 5 points
+    if (computerScore === 5 || playerScore === 5) {
         document.getElementById("1").disabled = true;
         document.getElementById("2").disabled = true;
-        document.getElementById("3").disabled = true;
+        document.getElementById("3").disabled = true; 
     }
-    else if (playerScore == 5) {
-        announcement.textContent = "You won!!!";
+    if (computerScore === 5) {
+        announcement.textContent = "You lost!"
+        announcement.style.color = "red";
         container.appendChild(announcement);
-        document.getElementById("1").disabled = true;
-        document.getElementById("2").disabled = true;
-        document.getElementById("3").disabled = true;
+    }
+    else if (playerScore === 5) {
+        announcement.textContent = "You won!";
+        announcement.style.color = "lightgreen";
+        container.appendChild(announcement);
     }
 }
 
 const containerDiv = document.querySelector("#container");
 
 const outcome = document.createElement("p");
-outcome.textContent = "test";
+outcome.textContent = "";
 containerDiv.appendChild(outcome);
 
 
@@ -131,3 +108,4 @@ scissorsBtn.addEventListener("click", () => {
     announceWinner(playerScore, computerScore);
 })
 
+//todo: add reset button    add some styling
