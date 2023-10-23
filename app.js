@@ -1,68 +1,5 @@
-//array of possible choices other functions can use
-const choices = ["rock", "paper", "scissors"];
-
-function getComputerChoice() {
-    const randomIndex = Math.floor(Math.random() * choices.length);
-    return choices[randomIndex];
-}
-
-function getPlayerChoice() {
-    //loop to repeat prompt in case the player gives unwanted input
-    inputValdation = false;
-    while (inputValdation == false) {
-        const input = prompt("Rock, paper or scissors?");
-        if (input == null) {
-            continue;
-        }
-        const inputToLowerCase = input.toLowerCase();
-        if (choices.includes(inputToLowerCase)) {
-            inputValdation = true;
-            return inputToLowerCase;
-        }
-    }
-}
-
-function checkWinner(playerChoice, computerChoice) {
-    if (playerChoice == "rock" && computerChoice == "scissors" || playerChoice == "paper" && computerChoice ==      "rock" || playerChoice == "scissors" && computerChoice == "paper") {
-        return "player";
-    }
-    else if (playerChoice == computerChoice) {
-        return "tie";
-    }
-    else {
-        return "computer";
-    }
-}
-
-function announceWinner(playerScore, computerScore) {
-    if (playerScore > computerScore) {
-        console.log("You won!!!");
-    }
-    else if (playerScore == computerScore) {
-        console.log("It's a tie!!!");
-    }
-    else {
-        console.log("You lost!!!")
-    }
-}
-
-//plays one round of rock paper scissors 
-function play(playerChoice, computerChoice) {
-    //declare variable to get result from checkWinner function to use in if statements
-    const result = checkWinner(playerChoice, computerChoice);
-    if (result == "player") {
-        return `You win! ${playerChoice} beats ${computerChoice}`;
-    }
-    else if (result == "tie") {
-        return "It's a tie!";
-    }
-    else {
-        return `You loose! ${computerChoice} beats ${playerChoice}`; 
-    }
-}
-
 //plays 5 rounds of rock paper scissors and keeps track of scores to declare a winner at the end
-function game() {
+/* function game() {
     //declare varaibles to keep track of scores
     let playerScore = 0;
     let computerScore = 0;
@@ -84,8 +21,104 @@ function game() {
     //display players and computers scores and announce the winner
     console.log(`Your score: ${playerScore}
 Computers score: ${computerScore}`);
-    announceWinner(playerScore, computerScore);
+    announceWinner(playerScore, computerScore); */
 
+//array of possible choices other functions can use
+const choices = ["rock", "paper", "scissors"];
+
+function getComputerChoice() {
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
 }
 
-game();
+function checkWinner(playerChoice, computerChoice) {
+    if (playerChoice == "rock" && computerChoice == "scissors" || playerChoice == "paper" && computerChoice ==      "rock" || playerChoice == "scissors" && computerChoice == "paper") {
+        return "player";
+    }
+    else if (playerChoice == computerChoice) {
+        return "tie";
+    }
+    else {
+        return "computer";
+    }
+}
+
+let computerScore = 0;
+let playerScore = 0;
+
+const scoreDiv = document.querySelector("#scoreDiv");
+const playerScoreSpan = document.querySelector("#playerScoreSpan");
+const computerScoreSpan = document.querySelector("#computerScoreSpan");
+
+function updateScore (playerScore, computerScore) {
+    playerScoreSpan.textContent =  `Player Score: ${playerScore}`;
+    computerScoreSpan.textContent = `Computer Score: ${computerScore}`;
+}
+
+function announceWinner(playerScore, computerScore) {
+    const container = document.querySelector("#container");
+    const announcement = document.createElement("h2");
+    if (computerScore === 5) {
+        announcement.textContent = "You lost!!!"
+        container.appendChild(announcement);
+    }
+    else if (playerScore === 5) {
+        announcement.textContent = "You won!!!";
+        container.appendChild(announcement);
+    }
+}
+
+//plays one round of rock paper scissors 
+function play(playerChoice, computerChoice) {
+    //declare variable to get result from checkWinner function to use in if statements
+    const result = checkWinner(playerChoice, computerChoice);
+    const outcomeDiv = document.querySelector("#outcome");
+    if (result == "player") {
+        const p = document.createElement("p");
+        p.textContent = `You win! ${playerChoice} beats ${computerChoice}`;
+        outcomeDiv.appendChild(p);
+        playerScore++;
+    }
+    else if (result == "tie") {
+        const p = document.createElement("p");
+        p.textContent = "It's a tie!";
+        outcomeDiv.appendChild(p);
+    }
+    else {
+        const p = document.createElement("p");
+        p.textContent = `You loose! ${computerChoice} beats ${playerChoice}`;
+        outcomeDiv.appendChild(p);
+        computerScore++;
+    }
+}
+
+//UI
+
+const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
+const scissorsBtn = document.querySelector("#scissors");
+
+rockBtn.addEventListener("click", () => {
+    const computerChoice = getComputerChoice();
+    const playerChoice = "rock";
+    play(playerChoice, computerChoice)
+    updateScore(playerScore, computerScore);
+    announceWinner(playerScore, computerScore);
+});
+
+paperBtn.addEventListener("click", () => {
+    const computerChoice = getComputerChoice();
+    const playerChoice = "paper";
+    play(playerChoice, computerChoice);
+    updateScore(playerScore, computerScore);
+    announceWinner(playerScore, computerScore);
+});
+
+scissorsBtn.addEventListener("click", () => {
+    const computerChoice = getComputerChoice();
+    const playerChoice = "paper";
+    play(playerChoice, computerChoice);
+    updateScore(playerScore, computerScore);
+    announceWinner(playerScore, computerScore);
+})
+
