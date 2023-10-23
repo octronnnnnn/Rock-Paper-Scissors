@@ -1,92 +1,91 @@
-//list the choices (rock paper scissors)
+//array of possible choices other functions can use
 const choices = ["rock", "paper", "scissors"];
 
-//function that randomly returns either rock, paper or scrissors
 function getComputerChoice() {
-    const choice = choices[Math.floor(Math.random() * choices.length)];
-    return choice;
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
 }
 
-//function to get player input
-function getPlayerInput() {
-    validateInput = false;
-    while (validateInput == false) {
-        const choice = prompt("Rock, paper or scrissors?");
-        if (choice == null) {
+function getPlayerChoice() {
+    //loop to repeat prompt in case the player gives unwanted input
+    inputValdation = false;
+    while (inputValdation == false) {
+        const input = prompt("Rock, paper or scissors?");
+        if (input == null) {
             continue;
         }
-        const choiceToLower = choice.toLowerCase();
-        if (choices.includes(choiceToLower)) {
-            validateInput = true;
-            return choiceToLower;
+        const inputToLowerCase = input.toLowerCase();
+        if (choices.includes(inputToLowerCase)) {
+            inputValdation = true;
+            return inputToLowerCase;
         }
     }
 }
 
-
-//function to check for winner
-function checkWinner(playerSelection, computerSelection) {
-    //player wins
-    if (playerSelection == "rock" && computerSelection == "scissors" || playerSelection == "paper" &&          computerSelection == "rock" || playerSelection == "scissors" && computerSelection == "paper") {
-        return "Player"
+function checkWinner(playerChoice, computerChoice) {
+    if (playerChoice == "rock" && computerChoice == "scissors" || playerChoice == "paper" && computerChoice ==      "rock" || playerChoice == "scissors" && computerChoice == "paper") {
+        return "player";
     }
-    //tie
-    else if (playerSelection == computerSelection) {
-        return "Tie";
+    else if (playerChoice == computerChoice) {
+        return "tie";
     }
-    //computer wins
     else {
-        return "Computer";
+        return "computer";
     }
 }
 
-//function that that takes the players and the computers choice and plays one round of rock paper scissors
-function play(playerSelection, computerSelection) {
+function announceWinner(playerScore, computerScore) {
+    if (playerScore > computerScore) {
+        console.log("You won!!!");
+    }
+    else if (playerScore == computerScore) {
+        console.log("It's a tie!!!");
+    }
+    else {
+        console.log("You lost!!!")
+    }
+}
 
-    const result = checkWinner(playerSelection, computerSelection);
-    if (result == "Tie") {
+//plays one round of rock paper scissors 
+function play(playerChoice, computerChoice) {
+    //declare variable to get result from checkWinner function to use in if statements
+    const result = checkWinner(playerChoice, computerChoice);
+    if (result == "player") {
+        return `You win! ${playerChoice} beats ${computerChoice}`;
+    }
+    else if (result == "tie") {
         return "It's a tie!";
     }
-    else if (result == "Player") {
-        return `You win! ${playerSelection} beats ${computerSelection}`;
-    }
     else {
-        return `You loose! ${computerSelection} beats ${playerSelection}`;
+        return `You loose! ${computerChoice} beats ${playerChoice}`; 
     }
 }
 
-//function that plays 5 games of rock paper sicssors and keeps track of scores and announces a winner at the end
- function game() {
-    //decalre variables to keep track of scores
+//plays 5 rounds of rock paper scissors and keeps track of scores to declare a winner at the end
+function game() {
+    //declare varaibles to keep track of scores
     let playerScore = 0;
     let computerScore = 0;
-    //loop to play 5 times 
-    for (let i = 0; i < 5; i++) {
-        //declare varaible for the players selection
-        let playerSelection = getPlayerInput();
-        //declare variable for the computers selection
-        let computerSelection = getComputerChoice();
-        console.log(play(playerSelection, computerSelection)); 
-        if (checkWinner(playerSelection, computerSelection) == "Player") {
+    //loop to play 5 rounds
+    for (i = 0; i < 5; i++) {
+        //declare variables for players and computers choice to pass to play and checkWinner functions
+        const playerChoice = getPlayerChoice();
+        const computerChoice = getComputerChoice();
+        //play the game and log the result
+        console.log(play(playerChoice, computerChoice));
+        //increse scores based on who won the round
+        if (checkWinner(playerChoice, computerChoice) == "player") {
             playerScore++;
         }
-        else if (checkWinner(playerSelection, computerSelection) == "Computer") {
+        else if (checkWinner(playerChoice, computerChoice) == "computer") {
             computerScore++;
         }
     }
-    //print scores
-    console.log(`Your score is ${playerScore}.`);
-    console.log(`The computers Score is ${computerScore}.`);
-    //declare Winner
-    if (playerScore > computerScore) {
-        console.log("You win!");
-    }
-    else if (computerScore > playerScore) {
-        console.log("The computer wins!");
-    }
-    else {
-        console.log("It's a tie!");
-    }
+    //display players and computers scores and announce the winner
+    console.log(`Your score: ${playerScore}
+Computers score: ${computerScore}`);
+    announceWinner(playerScore, computerScore);
+
 }
 
 game();
