@@ -80,7 +80,6 @@ function play(playerChoice, computerChoice) {
     //declare variable to get result from checkWinner function to use in if statements
     const result = checkWinner(playerChoice, computerChoice);
     if (result == "player") {
-        const p = document.createElement("p");
         console.log(`You win! ${playerChoice} beats ${computerChoice}`);
         outcome.textContent = `You win! ${playerChoice} beats ${computerChoice}`;     
         playerScore++;
@@ -120,7 +119,7 @@ paperBtn.addEventListener("click", () => {
 
 scissorsBtn.addEventListener("click", () => {
     const computerChoice = getComputerChoice();
-    const playerChoice = "paper";
+    const playerChoice = "scissors";
     play(playerChoice, computerChoice);
     updateScore(playerScore, computerScore);
     announceWinner(playerScore, computerScore);
