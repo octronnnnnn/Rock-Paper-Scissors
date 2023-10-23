@@ -46,7 +46,7 @@ function checkWinner(playerChoice, computerChoice) {
 let computerScore = 0;
 let playerScore = 0;
 
-const scoreDiv = document.querySelector("#scoreDiv");
+const scoreDiv = document.querySelector("#score");
 const playerScoreSpan = document.querySelector("#playerScoreSpan");
 const computerScoreSpan = document.querySelector("#computerScoreSpan");
 
@@ -68,26 +68,30 @@ function announceWinner(playerScore, computerScore) {
     }
 }
 
+const containerDiv = document.querySelector("#container");
+
+const outcome = document.createElement("p");
+outcome.textContent = "test";
+containerDiv.appendChild(outcome);
+
+
 //plays one round of rock paper scissors 
 function play(playerChoice, computerChoice) {
     //declare variable to get result from checkWinner function to use in if statements
     const result = checkWinner(playerChoice, computerChoice);
-    const outcomeDiv = document.querySelector("#outcome");
     if (result == "player") {
         const p = document.createElement("p");
-        p.textContent = `You win! ${playerChoice} beats ${computerChoice}`;
-        outcomeDiv.appendChild(p);
+        console.log(`You win! ${playerChoice} beats ${computerChoice}`);
+        outcome.textContent = `You win! ${playerChoice} beats ${computerChoice}`;     
         playerScore++;
     }
     else if (result == "tie") {
-        const p = document.createElement("p");
-        p.textContent = "It's a tie!";
-        outcomeDiv.appendChild(p);
+        console.log("It's a tie!");
+        outcome.textContent = "It's a tie!";
     }
     else {
-        const p = document.createElement("p");
-        p.textContent = `You loose! ${computerChoice} beats ${playerChoice}`;
-        outcomeDiv.appendChild(p);
+        console.log(`You loose! ${computerChoice} beats ${playerChoice}`);
+        outcome.textContent = `You loose! ${computerChoice} beats ${playerChoice}`;
         computerScore++;
     }
 }
