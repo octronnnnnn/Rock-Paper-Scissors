@@ -44,11 +44,19 @@ function play(playerChoice, computerChoice) {
     }
 }
 
+function reset () {
+    //create reset button
+    const resetBtn = document.createElement("button");
+    resetBtn.textContent = "Reset";
+    outcomeDiv.appendChild(resetBtn);
+    resetBtn.addEventListener("click", () => {
+        location.reload();
+    })
+}
+
 function announceWinner(playerScore, computerScore) {
-    const roundsToPlay = 5;
-    //get reference to outcomeDiv to append a win/loose message
-    const outcomeDiv = document.querySelector("#outcome");
-    //create Element to display win/loose message
+    const roundsToPlay = 2;
+    //create element to display win/loose message
     const announcement = document.createElement("h1");
     //disable buttons as soon as the game ends
     if (computerScore === roundsToPlay || playerScore === roundsToPlay) {
@@ -61,11 +69,13 @@ function announceWinner(playerScore, computerScore) {
         announcement.textContent = "You lost!"
         announcement.style.color = "#E74C3C";
         outcomeDiv.appendChild(announcement);
+        reset();
     }
     else if (playerScore === roundsToPlay) {
         announcement.textContent = "You won!";
         announcement.style.color = "#2ECC71";
         outcomeDiv.appendChild(announcement);
+        reset();
     }
 }
 
@@ -76,13 +86,14 @@ let playerScore = 0;
 
 //UI
 
-//get reference to container element to appends a paragraph that displays the outcome when a round is played
-const containerDiv = document.querySelector("#container");
+//get reference to outcomeDiv to append outcome messages and a reset button
+const outcomeDiv = document.querySelector("#outcome");
+
 //create paragraph for the play function to display the outcome of a around
 const outcome = document.createElement("p");
 outcome.textContent = "";
 outcome.style.color = "#1B4F72";
-containerDiv.appendChild(outcome);
+outcomeDiv.appendChild(outcome);
 
 //get references to rock, paper, scissors -buttons 
 const rockBtn = document.querySelector(".rock");
@@ -103,6 +114,7 @@ paperBtn.addEventListener("click", () => {
     play(playerChoice, computerChoice);
     updateScore(playerScore, computerScore);
     announceWinner(playerScore, computerScore);
+
 });
 
 scissorsBtn.addEventListener("click", () => {
@@ -112,5 +124,3 @@ scissorsBtn.addEventListener("click", () => {
     updateScore(playerScore, computerScore);
     announceWinner(playerScore, computerScore);
 })
-
-//todo: add reset button   
