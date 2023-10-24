@@ -47,7 +47,7 @@ function play(playerChoice, computerChoice) {
 function reset () {
     //create reset button
     const resetBtn = document.createElement("button");
-    resetBtn.textContent = "Reset";
+    resetBtn.textContent = "Play again";
     outcomeDiv.appendChild(resetBtn);
     resetBtn.addEventListener("click", () => {
         location.reload();
@@ -60,9 +60,9 @@ function announceWinner(playerScore, computerScore) {
     const announcement = document.createElement("h1");
     //disable buttons as soon as the game ends
     if (computerScore === roundsToPlay || playerScore === roundsToPlay) {
-        document.getElementById("1").disabled = true;
-        document.getElementById("2").disabled = true;
-        document.getElementById("3").disabled = true; 
+        document.getElementById("rock").disabled = true;
+        document.getElementById("paper").disabled = true;
+        document.getElementById("scissors").disabled = true; 
         outcome.textContent = "Game over";
     }
     if (computerScore === roundsToPlay) {
@@ -79,10 +79,24 @@ function announceWinner(playerScore, computerScore) {
     }
 }
 
+function game () {
+    //get reference to all buttons 
+    const buttons = document.querySelectorAll("button");
+    //give each button an eventListener
+    buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        const playerChoice = button.id;
+        const computerChoice = getComputerChoice();
+        play(playerChoice, computerChoice)
+        updateScore(playerScore, computerScore);
+        announceWinner(playerScore, computerScore);
+    })
+})
+}
+
 //declare global variables to keep track of scores and for other functions to use
 let computerScore = 0;
 let playerScore = 0;
-
 
 //UI
 
@@ -95,32 +109,5 @@ outcome.textContent = "";
 outcome.style.color = "#1B4F72";
 outcomeDiv.appendChild(outcome);
 
-//get references to rock, paper, scissors -buttons 
-const rockBtn = document.querySelector(".rock");
-const paperBtn = document.querySelector(".paper");
-const scissorsBtn = document.querySelector(".scissors");
 
-rockBtn.addEventListener("click", () => {
-    const computerChoice = getComputerChoice();
-    const playerChoice = "rock";
-    play(playerChoice, computerChoice)
-    updateScore(playerScore, computerScore);
-    announceWinner(playerScore, computerScore);
-});
-
-paperBtn.addEventListener("click", () => {
-    const computerChoice = getComputerChoice();
-    const playerChoice = "paper";
-    play(playerChoice, computerChoice);
-    updateScore(playerScore, computerScore);
-    announceWinner(playerScore, computerScore);
-
-});
-
-scissorsBtn.addEventListener("click", () => {
-    const computerChoice = getComputerChoice();
-    const playerChoice = "scissors";
-    play(playerChoice, computerChoice);
-    updateScore(playerScore, computerScore);
-    announceWinner(playerScore, computerScore);
-})
+game ();
