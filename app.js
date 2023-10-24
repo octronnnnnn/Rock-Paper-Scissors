@@ -55,7 +55,7 @@ function reset () {
 }
 
 function announceWinner(playerScore, computerScore) {
-    const roundsToPlay = 2;
+    const roundsToPlay = 5;
     //create element to display win/loose message
     const announcement = document.createElement("h1");
     //disable buttons as soon as the game ends
