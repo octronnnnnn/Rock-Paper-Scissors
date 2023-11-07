@@ -55,14 +55,14 @@ function reset () {
 }
 
 function announceWinner(playerScore, computerScore) {
-    const roundsToPlay = 5;
+    const roundsToPlay = 2;
     //create element to display win/loose message
     const announcement = document.createElement("h1");
-    //disable buttons as soon as the game ends
+    //hide buttons as soon as the game ends
     if (computerScore === roundsToPlay || playerScore === roundsToPlay) {
-        document.getElementById("rock").disabled = true;
-        document.getElementById("paper").disabled = true;
-        document.getElementById("scissors").disabled = true; 
+        document.getElementById("rock").style.visibility = "hidden";
+        document.getElementById("paper").style.visibility = "hidden";
+        document.getElementById("scissors").style.visibility = "hidden";
         outcome.textContent = "Game over";
     }
     if (computerScore === roundsToPlay) {
@@ -105,7 +105,7 @@ const outcomeDiv = document.querySelector("#outcome");
 
 //create paragraph for the play function to display the outcome of a around
 const outcome = document.createElement("p");
-outcome.textContent = "";
+outcome.textContent = "Ready!";
 outcome.style.color = "#1B4F72";
 outcomeDiv.appendChild(outcome);
 
