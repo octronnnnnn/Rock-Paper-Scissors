@@ -88,6 +88,7 @@ function game () {
         const playerChoice = button.id;
         const computerChoice = getComputerChoice();
         play(playerChoice, computerChoice)
+        updateVsDisplay(playerChoice, computerChoice);
         updateScore(playerScore, computerScore);
         announceWinner(playerScore, computerScore);
     })
@@ -111,3 +112,12 @@ outcomeDiv.appendChild(outcome);
 
 
 game ();
+
+
+function updateVsDisplay (playerChoice, computerChoice) {
+    const playerDisplay = document.querySelector("#displayPlayer p");
+    playerDisplay.textContent = playerChoice;
+    
+    const computerDisplay = document.querySelector("#displayComputer p");
+    computerDisplay.textContent = computerChoice;
+}
