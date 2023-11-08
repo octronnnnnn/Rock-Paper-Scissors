@@ -4,7 +4,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 24px;
+    gap: 64px;
 }
 
 #score {
@@ -14,7 +14,8 @@ body {
 
 #container {
     display: flex;
-    gap: 24px;
+    justify-content: space-evenly;
+    width: 200px;
 }
 
 #outcome {
@@ -39,16 +40,27 @@ button:hover {
 
 #displayContainer {
     display: flex;
-    width: 30%;
-    justify-content: space-evenly;
+    justify-content: center;
+    width: 40%;
 }
 
-#displayContainer p {
-    margin-left: 12px;
-    margin-right: 12px;
+h1 {
+    margin-top: 0;
 }
 
-#score span {
-    margin-left: 12px;
-    margin-right: 12px;
+#displayPlayer {
+    width: 100px;
 }
+
+#displayComputer {
+    width: 100px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#displayPlayer {
+    width: 100px;
+    display: flex;
+    justify-content: flex-start;
+}
+
