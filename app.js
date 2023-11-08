@@ -20,8 +20,8 @@ function updateScore (playerScore, computerScore) {
     //get references to player and computer score spans to update scores
     const playerScoreSpan = document.querySelector("#playerScoreSpan");
     const computerScoreSpan = document.querySelector("#computerScoreSpan");
-    playerScoreSpan.textContent =  `Player Score: ${playerScore}`;
-    computerScoreSpan.textContent = `Computer Score: ${computerScore}`;
+    playerScoreSpan.textContent = `Player: ${playerScore}`;
+    computerScoreSpan.textContent = `Computer: ${computerScore}`;
 }
 
 //plays one round of rock paper scissors and updates scores
@@ -48,35 +48,55 @@ function reset () {
     //create reset button
     const resetBtn = document.createElement("button");
     resetBtn.textContent = "Play again";
-    outcomeDiv.appendChild(resetBtn);
+    btnContainer.appendChild(resetBtn);
     resetBtn.addEventListener("click", () => {
         location.reload();
     })
 }
 
 function announceWinner(playerScore, computerScore) {
-    const roundsToPlay = 2;
-    //create element to display win/loose message
-    const announcement = document.createElement("h1");
-    //hide buttons as soon as the game ends
+    const roundsToPlay = 3;
+    //remove buttons as soon as the game ends | empty choice dispaly | add replay button | change vsText to dispay winner announcement
     if (computerScore === roundsToPlay || playerScore === roundsToPlay) {
-        document.getElementById("rock").style.visibility = "hidden";
-        document.getElementById("paper").style.visibility = "hidden";
-        document.getElementById("scissors").style.visibility = "hidden";
-        outcome.textContent = "Game over";
+        removeChildren();
+        removeChoiceDisplay();
+        reset();
+        vsText.style.fontSize = "32px";
+        vsText.style.fontWeight = "900";
+        vsText.style.marginTop = "12px";
+        vsText.style.marginBottom = "0px";
+        outcome.textContent = "Game over!";
     }
     if (computerScore === roundsToPlay) {
-        announcement.textContent = "You lost!"
-        announcement.style.color = "#E74C3C";
-        outcomeDiv.appendChild(announcement);
-        reset();
+        vsText.textContent = "You lost"
+        vsText.style.color = "#E74C3C";
     }
     else if (playerScore === roundsToPlay) {
-        announcement.textContent = "You won!";
-        announcement.style.color = "#2ECC71";
-        outcomeDiv.appendChild(announcement);
-        reset();
+        vsText.textContent = "You won";
+        vsText.style.color = "#2ECC71";        
     }
+}
+
+function removeChildren() {
+    let rock = document.getElementById("rock");
+    let paper = document.getElementById("paper");
+    let scissors = document.getElementById("scissors");
+    btnContainer.removeChild(rock);
+    btnContainer.removeChild(paper);
+    btnContainer.removeChild(scissors);
+}
+
+function removeChoiceDisplay() {
+    displayComputerChoice.textContent = "";
+    displayPlayerChoice.textContent = "";
+}
+
+function updateVsDisplay (playerChoice, computerChoice) {
+    const playerDisplay = document.querySelector("#displayPlayer p");
+    playerDisplay.textContent = playerChoice;
+    
+    const computerDisplay = document.querySelector("#displayComputer p");
+    computerDisplay.textContent = computerChoice;
 }
 
 function game () {
@@ -99,25 +119,27 @@ function game () {
 let computerScore = 0;
 let playerScore = 0;
 
+
 //UI
 
-//get reference to outcomeDiv to append outcome messages and a reset button
+//get reference to outcomeDiv to append outcome messages
 const outcomeDiv = document.querySelector("#outcome");
+
+//get reference to button container to append reset button after game ends
+const btnContainer = document.querySelector("#container");
+
+//get reference to VS text
+const vsText = document.querySelector("#vs");
+
+//get reference to displayed player/pc choices
+const displayPlayerChoice = document.querySelector("#displayPlayer p");
+const displayComputerChoice = document.querySelector("#displayComputer p");
 
 //create paragraph for the play function to display the outcome of a around
 const outcome = document.createElement("p");
-outcome.textContent = "Ready!";
+outcome.textContent = "Make your Choice!";
 outcome.style.color = "#1B4F72";
 outcomeDiv.appendChild(outcome);
 
 
 game ();
-
-
-function updateVsDisplay (playerChoice, computerChoice) {
-    const playerDisplay = document.querySelector("#displayPlayer p");
-    playerDisplay.textContent = playerChoice;
-    
-    const computerDisplay = document.querySelector("#displayComputer p");
-    computerDisplay.textContent = computerChoice;
-}
