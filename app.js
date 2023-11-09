@@ -56,12 +56,12 @@ function reset () {
 }
 
 function announceWinner(playerScore, computerScore) {
-    const roundsToPlay = 1;
+    const roundsToPlay = 5;
     //remove buttons as soon as the game ends | empty choice dispaly | add replay button | change vsText to dispay winner announcement
     if (computerScore === roundsToPlay || playerScore === roundsToPlay) {
         removeChildren();
-        removeChoiceDisplay();
         reset();
+        clearDisplay();
         vsText.style.fontSize = "42px";
         vsText.style.fontWeight = "900";
         vsText.style.marginTop = "0";
@@ -78,6 +78,15 @@ function announceWinner(playerScore, computerScore) {
     }
 }
 
+function clearDisplay() {
+    playerChoiceDisplay.src = "";
+    computerChoiceDisplay.src = "";
+    playerChoiceDisplay.style.width = "0";
+    playerChoiceDisplay.style.height = "0";
+    computerChoiceDisplay.style.width = "0";
+    computerChoiceDisplay.style.height = "0";
+}
+
 function removeChildren() {
     let rock = document.getElementById("rock");
     let paper = document.getElementById("paper");
@@ -87,17 +96,33 @@ function removeChildren() {
     btnContainer.removeChild(scissors);
 }
 
-function removeChoiceDisplay() {
-    displayComputerChoice.textContent = "";
-    displayPlayerChoice.textContent = "";
-}
-
 function updateVsDisplay (playerChoice, computerChoice) {
-    const playerDisplay = document.querySelector("#displayPlayer p");
-    playerDisplay.textContent = playerChoice;
-    
-    const computerDisplay = document.querySelector("#displayComputer p");
-    computerDisplay.textContent = computerChoice;
+    let rock = "./icons/RockPixelArt.png"
+    let paper = "./icons/paperPixelArt.png"
+    let scissors = "./icons/scissors.png"
+
+    if (playerChoice === "rock") {
+        playerChoiceDisplay.src = rock;
+    }
+    else if(playerChoice === "paper") {
+        playerChoiceDisplay.src = paper;
+    }
+    else {
+        playerChoiceDisplay.src = scissors;
+    }
+    if (computerChoice === "rock") {
+        computerChoiceDisplay.src = rock;
+    }
+    else if(computerChoice === "paper") {
+        computerChoiceDisplay.src = paper;
+    }
+    else {
+        computerChoiceDisplay.src = scissors;
+    }
+    playerChoiceDisplay.style.width = "40px";
+    playerChoiceDisplay.style.height = "40px";
+    computerChoiceDisplay.style.width = "40px";
+    computerChoiceDisplay.style.height = "40px";
 }
 
 function game () {
@@ -126,8 +151,8 @@ let playerScore = 0;
 //outcome text animation
 function onTick () {
     outcome.classList.add("fade");
-    displayPlayerChoice.classList.add("fade");
-    displayComputerChoice.classList.add("fade");
+    playerChoiceDisplay.classList.add("fade");
+    computerChoiceDisplay.classList.add("fade");
 }
 
 const buttons = document.querySelectorAll("button");
@@ -148,10 +173,10 @@ const btnContainer = document.querySelector("#container");
 const vsText = document.querySelector("#vs");
 
 //get reference to displayed player/pc choices
-const displayPlayerChoice = document.querySelector("#displayPlayer p");
-displayPlayerChoice.classList.add("hideLeft");
-const displayComputerChoice = document.querySelector("#displayComputer p");
-displayComputerChoice.classList.add("hideRight");
+const playerChoiceDisplay = document.querySelector("#playerChoiceDisplay");
+const computerChoiceDisplay = document.querySelector("#computerChoiceDisplay");
+playerChoiceDisplay.classList.add("hideLeft");
+computerChoiceDisplay.classList.add("hideRight");
 
 //create paragraph for the play function to display the outcome of a around
 const outcome = document.createElement("p");
