@@ -48,6 +48,7 @@ function reset () {
     //create reset button
     const resetBtn = document.createElement("button");
     resetBtn.textContent = "Play again";
+    resetBtn.classList.add("resetBtn");
     btnContainer.appendChild(resetBtn);
     resetBtn.addEventListener("click", () => {
         location.reload();
@@ -55,16 +56,16 @@ function reset () {
 }
 
 function announceWinner(playerScore, computerScore) {
-    const roundsToPlay = 3;
+    const roundsToPlay = 1;
     //remove buttons as soon as the game ends | empty choice dispaly | add replay button | change vsText to dispay winner announcement
     if (computerScore === roundsToPlay || playerScore === roundsToPlay) {
         removeChildren();
         removeChoiceDisplay();
         reset();
-        vsText.style.fontSize = "32px";
+        vsText.style.fontSize = "64px";
         vsText.style.fontWeight = "900";
-        vsText.style.marginTop = "12px";
-        vsText.style.marginBottom = "0px";
+        vsText.style.marginTop = "0";
+        vsText.style.marginBottom = "0";
         outcome.textContent = "Game over!";
     }
     if (computerScore === roundsToPlay) {
@@ -122,6 +123,21 @@ let playerScore = 0;
 
 //UI
 
+//outcome text animation
+function onTick () {
+    outcome.classList.add("fade");
+    displayPlayerChoice.classList.add("fade");
+    displayComputerChoice.classList.add("fade");
+}
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        let timer = setInterval(onTick, 80);
+        outcome.classList.remove("fade");
+    })
+})
+
 //get reference to outcomeDiv to append outcome messages
 const outcomeDiv = document.querySelector("#outcome");
 
@@ -133,11 +149,14 @@ const vsText = document.querySelector("#vs");
 
 //get reference to displayed player/pc choices
 const displayPlayerChoice = document.querySelector("#displayPlayer p");
+displayPlayerChoice.classList.add("hideLeft");
 const displayComputerChoice = document.querySelector("#displayComputer p");
+displayComputerChoice.classList.add("hideRight");
 
 //create paragraph for the play function to display the outcome of a around
 const outcome = document.createElement("p");
-outcome.textContent = "Make your Choice!";
+outcome.textContent = "placeholder";
+outcome.classList.add("hide");
 outcome.style.color = "#1B4F72";
 outcomeDiv.appendChild(outcome);
 
