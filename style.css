@@ -67,4 +67,48 @@ h1 {
     justify-content: flex-start;
 }
 
+.hide {
+    opacity: 0;
+    transition: all 0.2s ease;
+    transform: translateY(-60px);
+    
+}
 
+#outcome p.fade {
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+#displayPlayer p.fade {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+#displayComputer p.fade {
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+
+.hideLeft {
+    opacity: 0;
+    transition: all 0.2s ease;
+    transform: translateX(-80px);
+    
+}
+
+.hideRight {
+    opacity: 0;
+    transition: all 0.2s ease;
+    transform: translateX(80px);
+    
+}
+
+#rock, #paper, #scissors {
+    border: none;
+    background: none;
+}
+
+.resetBtn {
+    margin-top: 5px;
+}
