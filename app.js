@@ -56,38 +56,36 @@ function reset () {
 }
 
 function announceWinner(playerScore, computerScore) {
-    const roundsToPlay = 5;
+    const roundsToPlay = 1;
     //remove buttons as soon as the game ends | empty choice dispaly | add replay button | change vsText to dispay winner announcement
     if (computerScore === roundsToPlay || playerScore === roundsToPlay) {
-        removeChildren();
+        removeButtons();
         reset();
         clearDisplay();
         vsText.style.fontSize = "42px";
         vsText.style.fontWeight = "900";
         vsText.style.marginTop = "0";
-        vsText.style.marginBottom = "0";
+        vsText.style.marginBottom = "19px";
         outcome.textContent = "Game over!";
     }
     if (computerScore === roundsToPlay) {
-        vsText.textContent = "You lost"
+        vsText.textContent = "YOU LOST!";
         vsText.style.color = "#E74C3C";
     }
     else if (playerScore === roundsToPlay) {
-        vsText.textContent = "You won";
-        vsText.style.color = "#2ECC71";        
+        vsText.textContent = "YOU WON!";
+        vsText.style.color = "#2ECC71";  
     }
 }
 
-function clearDisplay() {
-    playerChoiceDisplay.src = "";
-    computerChoiceDisplay.src = "";
-    playerChoiceDisplay.style.width = "0";
-    playerChoiceDisplay.style.height = "0";
-    computerChoiceDisplay.style.width = "0";
-    computerChoiceDisplay.style.height = "0";
+function clearDisplay() { 
+    const displayPlayerDiv = document.querySelector("#displayPlayer");
+    const displayComputerDiv = document.querySelector("#displayComputer");
+    displayPlayerDiv.removeChild(playerChoiceDisplay);
+    displayComputerDiv.removeChild(computerChoiceDisplay);
 }
 
-function removeChildren() {
+function removeButtons() {
     let rock = document.getElementById("rock");
     let paper = document.getElementById("paper");
     let scissors = document.getElementById("scissors");
@@ -119,10 +117,10 @@ function updateVsDisplay (playerChoice, computerChoice) {
     else {
         computerChoiceDisplay.src = scissors;
     }
-    playerChoiceDisplay.style.width = "40px";
-    playerChoiceDisplay.style.height = "40px";
-    computerChoiceDisplay.style.width = "40px";
-    computerChoiceDisplay.style.height = "40px";
+    playerChoiceDisplay.style.width = "60px";
+    playerChoiceDisplay.style.height = "60px";
+    computerChoiceDisplay.style.width = "60px";
+    computerChoiceDisplay.style.height = "60px";
 }
 
 function game () {
