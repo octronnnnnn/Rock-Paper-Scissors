@@ -62,7 +62,7 @@ function announceWinner(playerScore, computerScore) {
         removeChildren();
         removeChoiceDisplay();
         reset();
-        vsText.style.fontSize = "64px";
+        vsText.style.fontSize = "42px";
         vsText.style.fontWeight = "900";
         vsText.style.marginTop = "0";
         vsText.style.marginBottom = "0";
