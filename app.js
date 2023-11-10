@@ -56,33 +56,22 @@ function reset () {
 }
 
 function announceWinner(playerScore, computerScore) {
-    const roundsToPlay = 1;
+    const roundsToPlay = 5;
     //remove buttons as soon as the game ends | empty choice dispaly | add replay button | change vsText to dispay winner announcement
     if (computerScore === roundsToPlay || playerScore === roundsToPlay) {
         removeButtons();
         reset();
-        clearDisplay();
-        vsText.style.fontSize = "42px";
-        vsText.style.fontWeight = "900";
-        vsText.style.marginTop = "0";
-        vsText.style.marginBottom = "19px";
-        outcome.textContent = "Game over!";
+        outcome.textContent += ". Game Over!";
+        winnerAnnouncement.classList.add("fade");
     }
     if (computerScore === roundsToPlay) {
-        vsText.textContent = "YOU LOST!";
-        vsText.style.color = "#E74C3C";
+        winnerAnnouncement.textContent = "YOU LOST!";
+        winnerAnnouncement.style.color = "red";
     }
     else if (playerScore === roundsToPlay) {
-        vsText.textContent = "YOU WON!";
-        vsText.style.color = "#2ECC71";  
+        winnerAnnouncement.textContent = "YOU WON!";
+        winnerAnnouncement.style.color = "rgb(120, 200, 0)"; 
     }
-}
-
-function clearDisplay() { 
-    const displayPlayerDiv = document.querySelector("#displayPlayer");
-    const displayComputerDiv = document.querySelector("#displayComputer");
-    displayPlayerDiv.removeChild(playerChoiceDisplay);
-    displayComputerDiv.removeChild(computerChoiceDisplay);
 }
 
 function removeButtons() {
@@ -96,7 +85,7 @@ function removeButtons() {
 
 function updateVsDisplay (playerChoice, computerChoice) {
     let rock = "./icons/RockPixelArt.png"
-    let paper = "./icons/paperPixelArt.png"
+    let paper = "./icons/PaperPixelArt.png"
     let scissors = "./icons/scissors.png"
 
     if (playerChoice === "rock") {
@@ -167,8 +156,8 @@ const outcomeDiv = document.querySelector("#outcome");
 //get reference to button container to append reset button after game ends
 const btnContainer = document.querySelector("#container");
 
-//get reference to VS text
-const vsText = document.querySelector("#vs");
+//get reference to winnerAnnouncement text
+const winnerAnnouncement = document.querySelector("#winnerAnnouncement");
 
 //get reference to displayed player/pc choices
 const playerChoiceDisplay = document.querySelector("#playerChoiceDisplay");
@@ -180,7 +169,6 @@ computerChoiceDisplay.classList.add("hideRight");
 const outcome = document.createElement("p");
 outcome.textContent = "placeholder";
 outcome.classList.add("hide");
-outcome.style.color = "#1B4F72";
 outcomeDiv.appendChild(outcome);
 
 
