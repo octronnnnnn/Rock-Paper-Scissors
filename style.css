@@ -1,19 +1,38 @@
 body {
     font-family: 'Pixelify Sans', sans-serif;
-    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 24px;
-    background-color: #55267c;
+    font-size: 28px;
+    background-color: rgb(44, 102, 73);
     user-select: none;
+    height: 100vh;
+    box-sizing: border-box;
+    margin: 0;
+    color: yellow;
+    background-image: url(./backgroundImage/knightPixelArt.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 h1 {
-    margin-bottom: 100px;
-    font-size: 38px;
-    margin-top: 0;
-    font-weight: lighter;
+    margin-top: 50px;
+    margin-bottom: 75px;
+    font-size: 40px;
+    -webkit-text-stroke: 1.5px black;  
+    font-weight: bolder;
+}
+
+#vs {
+    font-size: 46px;
+    margin-top: 35px;
+}
+
+#winnerAnnouncement {
+    margin-bottom: 25px;
+    font-weight: bolder;
+    font-size: 46px;
+    -webkit-text-stroke: 1.5px black;
 }
 
 #container {
@@ -30,12 +49,16 @@ h1 {
     margin-bottom: 50px;
 }
 
-button:active {
+.resetBtn:active {
     transform: translateY(4px);
 }
 
 .selectionBtn:hover {
     scale: 1.2;
+}
+
+.selectionBtn:active {
+    scale: 1.1;
 }
 
 #score {
@@ -59,6 +82,7 @@ button:active {
     display: flex;
     justify-content: flex-end;
     height: 80px;
+    padding-top: 15px;
 }
 
 #displayPlayer {
@@ -66,6 +90,7 @@ button:active {
     display: flex;
     justify-content: flex-start;
     height: 80px;
+    padding-top: 15px;
 }
 
 .hide {
@@ -75,7 +100,7 @@ button:active {
     
 }
 
-#outcome p.fade {
+#outcome p.fade, #winnerAnnouncement.fade {
     opacity: 1;
     transform: translateY(0px);
 }
@@ -109,21 +134,21 @@ button:active {
     cursor: pointer;
     width: 80px;
     height: 80px;
-    border: 1px solid rgba(142, 142, 231, 0.5);
-    border-radius: 15%;
-    background-color: rgba(142, 142, 231, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    background-color: rgba(29, 0, 0, 0.5);
 }
 
 #rock:hover {
-    box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+    box-shadow: rgba(240, 225, 93, 0.5) -5px 5px, rgba(240, 225, 93, 0.3) -10px 10px, rgba(240, 225, 93, 0.2) -15px 15px, rgba(240, 230, 93, 0.1) -20px 20px, rgba(240, 230, 93, 0.05) -25px 25px;
 }
 
 #paper:hover {
-    box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+    box-shadow: rgba(240, 225, 93, 0.5) 0px 5px, rgba(240, 225, 93, 0.3) 0px 10px, rgba(240, 225, 93, 0.2) 0px 15px, rgba(240, 230, 93, 0.1) 0px 20px, rgba(240, 230, 93, 0.05) 0px 25px;
 }
 
 #scissors:hover {
-    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+    box-shadow: rgba(240, 225, 93, 0.5) 5px 5px, rgba(240, 225, 93, 0.3) 10px 10px, rgba(240, 225, 93, 0.2) 15px 15px, rgba(240, 230, 93, 0.1) 20px 20px, rgba(240, 230, 93, 0.05) 25px 25px;
 }
 
 .resetBtn {
@@ -132,32 +157,49 @@ button:active {
     border: solid 4px black;
     font-size: 24px;
     padding: 10px;
+    color: yellow;
     cursor: pointer;
-    background: #7C7C7C;
+    background-color: rgba(29, 0, 0, 0.7);
 	border-bottom: 6px inset rgba(0,0,0,.5);
 	border-left: 6px inset rgba(0,0,0,.5);
-	border-right: 6px inset rgba(255,255,255,.5);
-	border-top: 6px inset rgba(255,255,255,.5);
+	border-right: 6px inset rgba(168, 168, 168, 0.5);
+	border-top: 6px inset rgba(218, 218, 218, 0.5);
     &:focus,
 	&:hover {
-		background: #BCBCBC;
+		background: rgba(29, 0, 0, 0.95);
 	}  
 }
 
-#computerChoiceDisplay, #playerChoiceDisplay {
-    padding: 12px;
-    border: 1px solid rgba(142, 142, 231, 0.5);
-    border-radius: 15%;
-    background-color: rgba(142, 142, 231, 0.5);
-}
-
-
 #gameContainer {
-    background-color: rgba(14, 255, 255, 0.2);
-    border-radius:8px;
+    background-color: rgba(29, 0, 0, 0.55);
+    border-radius:6px;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 70%;
     padding-top: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(29, 0, 0, 0.55) ;
+    font-size: 18px;
+}
+
+a {
+    font-weight: light;
+    color: yellow;
+    font-size: 18px;
+}
+
+a:visited {
+    color: rgb(173, 173, 77);
+}
+
+
+#displayPlayer {
+    padding-top: 15px;
 }
