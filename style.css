@@ -131,7 +131,6 @@ h1 {
     scale: 1.1;
 }
 
-
 .resetBtn {
     font-family: 'Pixelify Sans', sans-serif;
     border-radius: 6px;
@@ -141,8 +140,8 @@ h1 {
     color: yellow;
     cursor: pointer;
     background-color: rgba(29, 0, 0, 0.7);
-	border-bottom: 6px inset rgba(0,0,0,.5);
-	border-left: 6px inset rgba(0,0,0,.5);
+	border-bottom: 6px inset rgba(0,0,0, 0.5);
+	border-left: 6px inset rgba(0,0,0, 0.5);
 	border-right: 6px inset rgba(168, 168, 168, 0.5);
 	border-top: 6px inset rgba(218, 218, 218, 0.5);
     &:focus,
@@ -188,13 +187,11 @@ a:visited {
 .hideLeft {
     opacity: 0; 
     transform: translateX(-150px);
-    
 }
 
 .hideRight {
     opacity: 0;
     transform: translateX(150px);
-    
 }
 
 #winnerAnnouncement.fade, #outcome p.fade  {
