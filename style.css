@@ -124,6 +124,7 @@ h1 {
 }
 
 .selectionBtn:hover {
+    border: solid 1px rgb(241, 241, 0) !important;
     scale: 1.2;
 }
 
