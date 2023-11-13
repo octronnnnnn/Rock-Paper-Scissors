@@ -12,6 +12,14 @@ outcome.textContent = "placeholder";
 outcome.classList.add("hide");
 outcomeDiv.appendChild(outcome);
 
+// prevent images from being dragged by the user
+function preventImgDrag() {
+    const img = document.querySelectorAll("img");
+    img.forEach((img) => {
+        img.setAttribute("draggable", "false");
+    })
+}
+
 // slide-fade-in animation
 function setAnimationClass () {
     outcome.classList.add("fade");
@@ -38,18 +46,19 @@ let playerScore = 0;
 const roundsToPlay = 5;
 
 function game () {
+    preventImgDrag();
     animate();
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-        const playerChoice = button.id;
-        const computerChoice = getComputerChoice();
-        play(playerChoice, computerChoice)
-        updateVsDisplay(playerChoice, computerChoice);
-        updateScore(playerScore, computerScore);
-        announceWinner(playerScore, computerScore);
+        button.addEventListener("click", () => {
+            const playerChoice = button.id;
+            const computerChoice = getComputerChoice();
+            play(playerChoice, computerChoice)
+            updateVsDisplay(playerChoice, computerChoice);
+            updateScore(playerScore, computerScore);
+            announceWinner(playerScore, computerScore);
+        })
     })
-})
 }
 
 function getComputerChoice() {
