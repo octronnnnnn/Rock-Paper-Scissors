@@ -145,6 +145,7 @@ function announceWinner(playerScore, computerScore) {
     }
 }
 
+// removes Rock Paper Scissors buttons after the game ends to make place for a replay button
 function removeButtons() {
     let rock = document.getElementById("rock");
     let paper = document.getElementById("paper");
@@ -164,9 +165,9 @@ function resetGame() {
     resetBtn.addEventListener("click", () => {
         playerScore = 0;
         computerScore = 0;
+        btnContainer.removeChild(resetBtn);
         resetAnimationClasses();
         createNewButtons();
-        btnContainer.removeChild(resetBtn);
         updateScore(playerScore, computerScore);       
         game();
     })
