@@ -151,8 +151,12 @@ h1 {
 	}
 }
 
+.resetBtn:hover {
+    scale: 1.1;
+}
+
 .resetBtn:active {
-    transform: translateY(4px);
+    scale: 1;
 }
 
 footer {
