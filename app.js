@@ -61,7 +61,7 @@ function announceWinner(playerScore, computerScore) {
     if (computerScore === roundsToPlay || playerScore === roundsToPlay) {
         removeButtons();
         reset();
-        outcome.textContent += ". Game Over!";
+        outcome.textContent = "Game Over!";
         winnerAnnouncement.classList.add("fade");
     }
     if (computerScore === roundsToPlay) {
@@ -135,7 +135,7 @@ let playerScore = 0;
 
 //UI
 
-//outcome text animation
+//animation
 function onTick () {
     outcome.classList.add("fade");
     playerChoiceDisplay.classList.add("fade");
@@ -145,8 +145,10 @@ function onTick () {
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
-        let timer = setInterval(onTick, 80);
+        let timer = setTimeout(onTick, 0);
         outcome.classList.remove("fade");
+        playerChoiceDisplay.classList.remove("fade");
+        computerChoiceDisplay.classList.remove("fade");
     })
 })
 
