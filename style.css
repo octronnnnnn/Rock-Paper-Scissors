@@ -1,9 +1,11 @@
+  @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
-    font-family: 'Pixelify Sans', sans-serif;
+    font-family: 'Press Start 2P', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 28px;
+    font-size: 22px;
     background-color: rgb(185, 37, 82);
     user-select: none;
     height: 100vh;
@@ -16,15 +18,15 @@ body {
 }
 
 h1 {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    font-size: 40px;
-    -webkit-text-stroke: 1.5px black;  
-    font-weight: bolder;
+    text-align: center;
+    margin-top: 75px;
+    margin-bottom: 75px;
+    font-size: 36px;
+    -webkit-text-stroke: 1.5px black;
 }
 
 #winnerAnnouncement {
-    margin-bottom: 50px;
+    margin-bottom: 75px;
     font-weight: bolder;
     font-size: 46px;
     -webkit-text-stroke: 1.5px black;
@@ -64,7 +66,7 @@ h1 {
 }
 
 #vs {
-    font-size: 46px;
+    font-size: 32px;
     margin-top: 35px;
 }
 
@@ -135,10 +137,11 @@ h1 {
 }
 
 .resetBtn {
-    font-family: 'Pixelify Sans', sans-serif;
+    font-family: 'Press Start 2P', sans-serif;
     border-radius: 6px;
     border: solid 4px black;
-    font-size: 24px;
+    height: 64px;
+    font-size: 16px;
     padding: 10px;
     color: yellow;
     cursor: pointer;
@@ -166,13 +169,13 @@ footer {
     width: 100%;
     text-align: center;
     background-color: rgba(29, 0, 0, 0.55) ;
-    font-size: 18px;
+    font-size: 14px;
+    padding-top: 6px;
 }
 
 a {
     font-weight: light;
     color: yellow;
-    font-size: 18px;
 }
 
 a:visited {
