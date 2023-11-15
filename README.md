@@ -7,4 +7,4 @@ This is a project for [The Odin Project](https://www.theodinproject.com/lessons/
 I revisited this project to add a GUI and experimented alot with design, styling and created some animations for the first time. I learned a lot about dynamic DOM manipulation to make this work.
 The UI is not optimizied for mobile and other viewports at this point.
 
-See the project[here](https://octronnnnnn.github.io/Rock-Paper-Scissors/).
+See the project [here](https://octronnnnnn.github.io/Rock-Paper-Scissors/).
