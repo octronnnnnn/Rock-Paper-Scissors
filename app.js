@@ -8,8 +8,6 @@ const computerChoiceDisplay = document.querySelector("#computerChoiceDisplay");
 
 //create element to display the outcome of a around in the outcomeDiv
 const outcome = document.createElement("p");
-outcome.textContent = "placeholder";
-outcome.classList.add("hide");
 outcomeDiv.appendChild(outcome);
 
 // prevent images from being dragged by the user
@@ -46,11 +44,13 @@ let playerScore = 0;
 const roundsToPlay = 5;
 
 function game () {
+    outcome.textContent = "Make your Choice!";
     preventImgDrag();
     animate();
     const buttons = document.querySelectorAll("button");
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
+            outcome.classList.add("hide");
             const playerChoice = button.id;
             const computerChoice = getComputerChoice();
             play(playerChoice, computerChoice)
@@ -177,7 +177,7 @@ function resetAnimationClasses() {
     playerChoiceDisplay.classList.remove("fade");
     computerChoiceDisplay.classList.remove("fade");
     winnerAnnouncement.classList.remove("fade");
-    outcome.classList.add("hide");
+    outcome.classList.remove("hide");
     outcome.classList.remove("fade");    
 }
 
