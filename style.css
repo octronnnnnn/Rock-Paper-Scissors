@@ -5,7 +5,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 22px;
+    font-size: 2.2vh;
     background-color: rgb(185, 37, 82);
     user-select: none;
     height: 100vh;
@@ -19,16 +19,16 @@ body {
 
 h1 {
     text-align: center;
-    margin-top: 75px;
-    margin-bottom: 75px;
-    font-size: 36px;
+    margin-top: 7.5vh;
+    margin-bottom: 7.5vh;
+    font-size: 3.6vh;
     -webkit-text-stroke: 1.5px black;
 }
 
 #winnerAnnouncement {
-    margin-bottom: 75px;
+    margin-bottom: 7.5vh;
     font-weight: bolder;
-    font-size: 46px;
+    font-size: 4.6vh;
     -webkit-text-stroke: 1.5px black;
 }
 
@@ -39,7 +39,7 @@ h1 {
     flex-direction: column;
     align-items: center;
     width: 70%;
-    padding-top: 50px;
+    padding-top: 5vh;
     border: 1px solid rgba(0, 0, 0, 0.2);
     box-shadow: rgba(0, 0, 0, 0.2) 3px 3px 64px 4px inset, rgba(0, 0, 0, 0.2) -3px -3px 64px 4px inset;
 }
@@ -49,7 +49,7 @@ h1 {
     justify-content: center;
     align-items: center;
     width: 40%;
-    margin-bottom: 50px;
+    margin-bottom: 5vh;
 }
 
 #score {
@@ -57,16 +57,20 @@ h1 {
     justify-content: space-between;
     width: 80%;
     text-align: center;
-    padding-top: 25px;
+    padding-top: 2.5vh;
 }
 
 #displayContainer img {
-    width: 60px;
-    height: 60px;
+    width: 4vw;
+    height: 4vw;
+    min-width: 30px;
+    min-height: 30px;
+    max-width: 60px;
+    max-height: 60px;
 }
 
 #vs {
-    font-size: 32px;
+    font-size: 3.2vh;
     margin-top: 35px;
 }
 
@@ -74,41 +78,44 @@ h1 {
     padding-left: 15%;
     display: flex;
     justify-content: flex-end;
-    height: 80px;
-    padding-top: 15px;
+    height: 8vh;
+    padding-top: 1.5vh;
 }
 
 #displayPlayer {
     padding-right: 15%;
     display: flex;
     justify-content: flex-start;
-    height: 80px;
-    padding-top: 15px;
+    height: 8vh;
+    padding-top: 1.5vh;
 }
 
 #outcome {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 50px;
+    margin-bottom: 5vh;
 }
 
 #container {
+    width: 30vw;
+    justify-content: center;
     display: flex;
-    justify-content: space-evenly;
-    width: 280px;
-    margin-top: 80px;
+    margin-top: 8vh;
+    gap: 2vw;
 }
 
 #container img {
-    width: 50px;
-    height: 50px;
+    width: 5vh;
+    height: 5vh;
 }
 
 #rock, #paper, #scissors {
     cursor: pointer;
-    width: 80px;
-    height: 80px;
+    width: 8vh;
+    height: 8vh;
+    min-height: 7vh;
+    min-width: 7vh;
     border: 1px solid rgba(0, 0, 0, 0.4);
     border-radius: 12px;
     background-color: rgba(29, 0, 0, 0.5);
@@ -141,7 +148,7 @@ h1 {
     border-radius: 6px;
     border: solid 4px black;
     height: 64px;
-    font-size: 16px;
+    font-size: 1.6vh;
     padding: 10px;
     color: yellow;
     cursor: pointer;
@@ -169,7 +176,7 @@ footer {
     width: 100%;
     text-align: center;
     background-color: rgba(29, 0, 0, 0.55) ;
-    font-size: 14px;
+    font-size: 1.4vh;
     padding-top: 6px;
 }
 
